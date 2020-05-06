@@ -1,0 +1,29 @@
+{
+  "name": "stocktwits",
+  "version": "1.0.0",
+  "description": "Fetching tweets from stocktwits.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omar-enrique/StockTwits.git"
+  },
+  "author": "Omar Finol-Evans",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omar-enrique/StockTwits/issues"
+  },
+  "homepage": "https://github.com/omar-enrique/StockTwits#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "nodemon": "^2.0.3",
+    "passport": "^0.4.1",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}
