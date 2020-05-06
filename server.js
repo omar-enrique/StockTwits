@@ -7,7 +7,7 @@ const LOCAL_PORT = 8080;
 
 const app = express();
 app.use(session({secret: "stocktwits", resave: false, saveUninitialized: false, cookie: {maxAge: 1000 * 60}}))
-	// .use(express.static(path.join(__dirname, 'client', 'build')))
+	.use(express.static(path.join(__dirname, 'client', 'build')))
     .use(express.json());
     
 app.use((req, res, next) => {
