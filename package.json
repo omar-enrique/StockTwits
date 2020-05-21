@@ -23,7 +23,6 @@
     "express-session": "^1.17.1",
     "nodemon": "^2.0.3",
     "passport": "^0.4.1",
-    "path": "^0.12.7",
-    "request": "^2.88.2"
+    "path": "^0.12.7"
   }
 }
