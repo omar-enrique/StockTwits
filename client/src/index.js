@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import logo from './logo.svg';
 import './styles/main.scss';
 
 import Posts from './components/posts';
@@ -26,38 +25,36 @@ class App extends React.Component {
 	}
 
 	fetchMessages = async (symbol) => {
-		let response = await fetch(`http://localhost:8080/tweets/${symbol}`, {method: 'GET'});
-		let body = await response.json();
+		if(this.state.symbols.includes(symbol)) {
+			alert('Symbol already searched!')
+			return;
+		}
 
-		let new_symbols = this.state.symbols.concat(symbol);
-		let new_messages = this.state.messages.concat(body.messages);
+		try {
+			let response = await fetch(`http://localhost:8080/tweets/${symbol}`, {method: 'GET'});
+			let body = await response.json();
+			
+			let new_symbols = this.state.symbols.concat(symbol);
+			let new_messages = this.state.messages.concat(body.messages);
 
-		this.setState({
-			symbols: new_symbols,
-			messages: new_messages
-		});
-		console.log(this.state.symbols, this.state.messages);
+			this.setState({
+				symbols: new_symbols,
+				messages: new_messages
+			});
+			console.log(this.state.symbols, this.state.messages);
+		}
+		catch(err) {
+			alert(err);
+		}
 	}
 	
 	render() {
 		return(
-		<div className="App">
-			<input ref={this.searchSymbolRef} type='text' onKeyDown={(e) => ( e.keyCode === 13 ? this.fetchMessages(this.searchSymbolRef.current.value) : console.log(false)) }/>
+		<div className="container">
+			<div className="input-group mb-3">
+				<input placeholder="Stock Symbol" className="form-control" ref={this.searchSymbolRef} type='text' onKeyDown={(e) => ( e.keyCode === 13 ? this.fetchMessages(this.searchSymbolRef.current.value) : console.log(false)) }/>
+			</div>
 			<Posts messages={this.state.messages} />
-			{/* <header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-				Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-				className="App-link"
-				href="https://reactjs.org"
-				target="_blank"
-				rel="noopener noreferrer"
-				>
-				Learn React
-				</a>
-			</header> */}
 		</div>
 		)
 	}

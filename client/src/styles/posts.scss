@@ -1,0 +1,23 @@
+.card {
+    &:not(:last-of-type) {
+        margin-bottom: 20px;
+    }
+    .message {
+        display:flex;
+
+        img {
+            width: 50px !important;
+            height: 50px !important;
+            margin-right: 15px;
+        }
+
+        .username {
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        &-body {
+            display: block;
+        }
+    }
+}
